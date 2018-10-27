@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algoritms</title>
+</head>
+<body>
+<script>
+    let DirectionEnum = {
+        Right: "Right",
+        Down: "Down",
+        Left: "Left",
+        Top: "Top"
+    };
+
+    function initMatrix(size) {
+        let matrix = [];
+        for (let i = 0; i < size; i++) {
+            matrix[i] = [];
+            for(let j = 0; j < size; j++) {
+                matrix[i][j] = null;
+            }
+        }
+        return matrix;
+    }
+
+    function spiral(size) {
+        let string = 0;
+        let column = 0;
+        let direction = DirectionEnum.Right;
+        const maxValue = Math.pow(size, 2);
+        const matrix = initMatrix(size);
+        let n = 0;
+
+
+        while(n < maxValue) {
+            switch (direction) {
+                case DirectionEnum.Right:
+                    console.log("Right Enter --------------")
+                    if(matrix[string][column]) column++;
+
+                    while(column < size && !matrix[string][column]) {
+                        n++;
+                        console.log(`matrix[${string}][${column}]`);
+                        matrix[string][column] = n;
+                        column++;
+                        console.log("Right " + n)
+                    }
+
+                    column--;
+                    direction = DirectionEnum.Down;
+                    break;
+                case DirectionEnum.Down:
+                    console.log("Down Enter --------------");
+                    if(matrix[string][column]) string++;
+
+                    while(string < size && !matrix[string][column]) {
+                        n++;
+                        console.log(`matrix[${string}][${column}]`);
+                        matrix[string][column] = n;
+                        string++;
+                        console.log("Down " + n)
+                    }
+
+                    string--;
+                    direction = DirectionEnum.Left;
+                    break;
+                case DirectionEnum.Left:
+                    console.log("Left Enter --------------");
+                    if(matrix[string][column]) column--;
+
+                    while(column >= 0 && !matrix[string][column]) {
+                        n++;
+                        console.log(`matrix[${string}][${column}]`);
+                        matrix[string][column] = n;
+                        column--;
+                        console.log("Left " + n)
+                    }
+
+                    column++;
+                    direction = DirectionEnum.Top;
+                    break;
+                case DirectionEnum.Top:
+                    console.log("Top Enter --------------");
+                    if(matrix[string][column]) string--;
+
+                    while(string >= 0 && !matrix[string][column]) {
+                        n++;
+                        console.log(`matrix[${string}][${column}]`);
+                        matrix[string][column] = n;
+                        string--;
+                        console.log("Top " + n)
+                    }
+
+                    string++;
+                    direction = DirectionEnum.Right;
+                    break;
+            }
+        }
+        return matrix;
+    }
+    console.log(spiral(6));
+</script>
+</body>
+</html>
