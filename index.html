@@ -36,60 +36,48 @@
         while(n < maxValue) {
             switch (direction) {
                 case DirectionEnum.Right:
-                    console.log("Right Enter --------------")
                     if(matrix[string][column]) column++;
 
                     while(column < size && !matrix[string][column]) {
                         n++;
-                        console.log(`matrix[${string}][${column}]`);
                         matrix[string][column] = n;
                         column++;
-                        console.log("Right " + n)
                     }
 
                     column--;
                     direction = DirectionEnum.Down;
                     break;
                 case DirectionEnum.Down:
-                    console.log("Down Enter --------------");
                     if(matrix[string][column]) string++;
 
                     while(string < size && !matrix[string][column]) {
                         n++;
-                        console.log(`matrix[${string}][${column}]`);
                         matrix[string][column] = n;
                         string++;
-                        console.log("Down " + n)
                     }
 
                     string--;
                     direction = DirectionEnum.Left;
                     break;
                 case DirectionEnum.Left:
-                    console.log("Left Enter --------------");
                     if(matrix[string][column]) column--;
 
                     while(column >= 0 && !matrix[string][column]) {
                         n++;
-                        console.log(`matrix[${string}][${column}]`);
                         matrix[string][column] = n;
                         column--;
-                        console.log("Left " + n)
                     }
 
                     column++;
                     direction = DirectionEnum.Top;
                     break;
                 case DirectionEnum.Top:
-                    console.log("Top Enter --------------");
                     if(matrix[string][column]) string--;
 
                     while(string >= 0 && !matrix[string][column]) {
                         n++;
-                        console.log(`matrix[${string}][${column}]`);
                         matrix[string][column] = n;
                         string--;
-                        console.log("Top " + n)
                     }
 
                     string++;
